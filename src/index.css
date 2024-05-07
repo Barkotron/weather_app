@@ -24,8 +24,81 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+/*
+Header
+*/
+
+#header {
+  text-align: left;
+}
+
+#header h1 {
+  text-align: left;
+}
+
+/*
+Weather-Content
+*/
+
+#weather-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-style: dashed;
+  border-radius: 8px;
+  border-color: lightgreen;
+}
+
+/*
+7-day
+*/
+
+#daily-forecast {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.daily-forecast-item {
+  
+  border-style: solid;
+  border-radius: 8px;
+  border-color: #1c1c29;
+  background: #f7f5f5;
+  min-width: 100px;
+  width: 100%;
+  margin: 8px;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+
+.daily-forecast-item h3{
+  color: #3d3d48;
+}
+.daily-forecast-item p{
+  color: #1c1c29;
+}
+
+.daily-forecast-item-right {
+  text-align: right;
+  width: 50%;
+  display: inline-block;
+  margin: 0px;
+}
+
+.daily-forecast-item-left {
+  text-align: left;
+  width: 49%;
+  display: inline-block;
+  margin: 0px;
 }
