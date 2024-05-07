@@ -46,13 +46,14 @@ Weather-Content
 
 #weather-content {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  border-style: dashed;
+  display: grid;
+  grid-template-areas:
+    'dailyforecast dailyforecast dailyforecast dailyforecast'
+    'hourlyforecast hourlyforecast today today';
+  gap: 10px;
+/*  border-style: dashed;
   border-radius: 8px;
-  border-color: lightgreen;
+  border-color: lightgreen;*/
 }
 
 /*
@@ -60,6 +61,7 @@ Weather-Content
 */
 
 #daily-forecast {
+  grid-area: dailyforecast;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -69,23 +71,23 @@ Weather-Content
 }
 
 .daily-forecast-item {
-  
   border-style: solid;
-  border-radius: 8px;
+  border-width: 4px;
+  border-radius: 16px;
   border-color: #1c1c29;
   background: #f7f5f5;
   min-width: 100px;
   width: 100%;
-  margin: 8px;
+  margin: 4px;
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 
-.daily-forecast-item h3{
+.daily-forecast-item h3 {
   color: #3d3d48;
 }
-.daily-forecast-item p{
+.daily-forecast-item p {
   color: #1c1c29;
 }
 
@@ -101,4 +103,50 @@ Weather-Content
   width: 49%;
   display: inline-block;
   margin: 0px;
+}
+
+/*
+hourly forecast
+*/
+
+#hourly-forecast {
+  grid-area: hourlyforecast;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+}
+
+.hourly-forecast-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 16px;
+  border-color: black;
+  background-color: #3d3d48;
+  margin: 4px;
+}
+
+/*
+today
+*/
+
+#today-forecast {
+  grid-area: today;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 16px;
+  border-color: #1c1c29;
+  color: #1c1c29;
+  background: #f7f5f5;
+
+  text-align: center;
+  justify-content: left;
+  align-items: center;
 }
