@@ -1,15 +1,16 @@
 import HourlyForecastItem from "./HourlyForecastItem";
-import { HOURLY_DATA } from "../store/HourlyData";
+//import { HOURLY_DATA } from "../store/Data.js";
 
-const hourlyData = HOURLY_DATA;
+//const hourlyData = HOURLY_DATA;
 
-export default function HourlyForecast() {
+export default function HourlyForecast({ hourlyData }) {
   return (
     <div id="hourly-forecast">
-      <ul id="hourly-forecast-list">
+      {hourlyData && <ul id="hourly-forecast-list">
         {hourlyData.map((item) => (
-        <HourlyForecastItem item={item}></HourlyForecastItem>))}
-      </ul>
+          <HourlyForecastItem item={item}></HourlyForecastItem>
+        ))}
+      </ul>}
     </div>
   );
 }

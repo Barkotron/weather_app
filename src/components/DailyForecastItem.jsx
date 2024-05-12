@@ -1,9 +1,10 @@
-export default function DailyForecastItem({ day, temp, high, low }) {
+export default function DailyForecastItem({ item }) {
   return (
     <div className="daily-forecast-item">
-      <h3>{day}</h3>
+      <h3>{item.dayOfWeek}</h3>
+      <p style={{fontSize: '10px'}}>{item.date}</p>
       <p>
-        {high}° / {low}°
+        {item.high}° / {item.low}°
       </p>
     </div>
   );
