@@ -6,8 +6,8 @@ const WEATHER_CODES = {
   45: "Fog",
   48: "Fog",
   51: "Light Drizzle",
-  52: "Moderate Drizzle",
-  53: "Heavy Drizzle",
+  53: "Moderate Drizzle",
+  55: "Heavy Drizzle",
   56: "Freezing Drizzle", //light
   57: "Freezing Drizzle", //heavy
   61: "Slight Rain",

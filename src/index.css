@@ -47,11 +47,13 @@ Weather-Content
 
 #weather-content {
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  /*display: grid;
   grid-template-areas:
     "dailyforecast dailyforecast"
     "hourlyforecast todayforecast";
-  gap: 8px;
+  gap: 8px;*/
   justify-content: center;
   justify-items: center;
   align-content: center;
@@ -66,7 +68,7 @@ Weather-Content
 */
 
 #daily-forecast {
-  grid-area: dailyforecast;
+  /*grid-area: dailyforecast;*/
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -122,7 +124,7 @@ hourly forecast
 */
 
 #hourly-forecast {
-  grid-area: hourlyforecast;
+  /*grid-area: hourlyforecast;*/
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -133,6 +135,8 @@ hourly forecast
   max-height: 400px;
   overflow-y: scroll;
   overflow-x: visible;
+  margin: 16px;
+  border: dashed green;
 }
 
 .hourly-forecast-item {
@@ -168,7 +172,7 @@ today
 */
 
 #today-forecast {
-  grid-area: todayforecast;
+  /*grid-area: todayforecast;*/
 
   width: 100%;
 
