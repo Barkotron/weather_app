@@ -73,10 +73,12 @@ export function formatDailyData(data) {
 }
 
 export function formatCurrentData(data) {
-  let days = [];
-  for (let i = 0; i < data.apparent_temperature.length; i++) {
-    const current = {};
+  const current = {
+    feelsLike: Math.round(data.apparent_temperature),
+    temp: Math.round(data.temperature_2m),
+    time: data.time,
+    condition: WEATHER_CODES[data.weather_code],
+  };
 
-    return hours;
-  }
+  return current;
 }

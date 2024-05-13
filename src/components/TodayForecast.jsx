@@ -1,10 +1,10 @@
-export default function TodayForecast() {
+export default function TodayForecast({ currentData }) {
   return (
     <div id="today-forecast">
-      <h3>--TEST--</h3>
-<p>test</p>
-<p>test</p>
-<p>test</p>
+      <h3>{currentData.time}</h3>
+      <p>{currentData.temp}°</p>
+      <p>Feels like {currentData.feelsLike}°</p>
+      <p>{currentData.condition}</p>
     </div>
   );
 }

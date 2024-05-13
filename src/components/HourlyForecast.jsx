@@ -8,7 +8,7 @@ export default function HourlyForecast({ hourlyData }) {
     <div id="hourly-forecast">
       {hourlyData && <ul id="hourly-forecast-list">
         {hourlyData.map((item) => (
-          <HourlyForecastItem item={item}></HourlyForecastItem>
+          <HourlyForecastItem key={item.time} item={item}></HourlyForecastItem>
         ))}
       </ul>}
     </div>
