@@ -29,15 +29,15 @@ const WEATHER_CODES = {
   99: "Thunderstorm with Hail", //heavy
 };
 
-const DAYS = {
-  0: "Sunday",
-  1: "Monday",
-  2: "Tuesday",
-  3: "Wednesday",
-  4: "Thursday",
-  5: "Friday",
-  6: "Saturday",
-};
+const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 export function formatHourlyData(data) {
   let hours = [];
@@ -62,7 +62,7 @@ export function formatDailyData(data) {
   let days = [];
   for (let i = 0; i < data.temperature_2m_max.length; i++) {
     const day = {
-      dayOfWeek: DAYS[new Date(data.time[i]).getDay()],
+      dayOfWeek: DAYS[new Date(data.time[i]).getUTCDay()],
       time: data.time[i],
       high: Math.round(data.temperature_2m_max[i]),
       low: Math.round(data.temperature_2m_min[i]),
