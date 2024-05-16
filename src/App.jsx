@@ -3,15 +3,20 @@ import Header from "./components/Header";
 import WeatherContent from "./components/WeatherContent";
 import { fetchWeather } from "./util/http";
 import { useEffect, useState } from "react";
-import { formatHourlyData, formatDailyData, formatCurrentData } from "./util/formatData";
+import {
+  formatHourlyData,
+  formatDailyData,
+  formatCurrentData,
+} from "./util/formatData";
+import { useContext } from "react";
+import WeatherContextProvider from "./store/WeatherContext";
+import { WeatherContext } from "./store/WeatherContext";
 
 function App() {
-  const [hourlyWeather, setHourlyWeather] = useState([]);
-  const [formattedHourlyWeather, setFormattedHourlyWeather] = useState([]);
-  const [formattedDailyWeather, setFormattedDailyWeather] = useState([]);
-  const [formattedCurrentWeather, setFormattedCurrentWeather] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState();
+
+  const weatherCtx = useContext(WeatherContext);
 
   useEffect(() => {
     async function fetchWeatherData() {
@@ -19,10 +24,12 @@ function App() {
       try {
         const data = await fetchWeather();
         console.log("all data", data);
-        setHourlyWeather(data);
-        setFormattedHourlyWeather(formatHourlyData(data.hourly));
-        setFormattedDailyWeather(formatDailyData(data.daily));
-        setFormattedCurrentWeather(formatCurrentData(data.current));
+
+        /* set up context */
+        weatherCtx.setDaily(data.daily);
+        weatherCtx.setHourly(data.hourly);
+        weatherCtx.setCurrent(data.current);
+
         console.log("hourly", formatHourlyData(data.hourly));
         console.log("daily", formatDailyData(data.daily));
         console.log("current", formatCurrentData(data.current));
@@ -40,11 +47,7 @@ function App() {
     <>
       <Header></Header>
       {!isFetching ? (
-        <WeatherContent
-          hourlyData={formattedHourlyWeather}
-          dailyData={formattedDailyWeather}
-          currentData={formattedCurrentWeather}
-        ></WeatherContent>
+        <WeatherContent></WeatherContent>
       ) : (
         <p>Fetching Weather Data...</p>
       )}

@@ -1,10 +1,15 @@
-export default function TodayForecast({ currentData }) {
+import { useContext } from "react";
+import { WeatherContext } from "../store/WeatherContext";
+
+export default function TodayForecast() {
+  const { today } = useContext(WeatherContext);
+
   return (
     <div id="today-forecast">
-      <h3>{currentData.time}</h3>
-      <p>{currentData.temp}°</p>
-      <p>Feels like {currentData.feelsLike}°</p>
-      <p>{currentData.condition}</p>
+      <h3>{today.time}</h3>
+      <p>{today.temp}°</p>
+      <p>Feels like {today.feelsLike}°</p>
+      <p>{today.condition}</p>
     </div>
   );
 }

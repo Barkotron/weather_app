@@ -1,16 +1,21 @@
 import HourlyForecastItem from "./HourlyForecastItem";
-//import { HOURLY_DATA } from "../store/Data.js";
+import { useContext } from "react";
+import { WeatherContext } from "../store/WeatherContext";
 
-//const hourlyData = HOURLY_DATA;
-
-export default function HourlyForecast({ hourlyData }) {
+export default function HourlyForecast() {
+  const { hourly } = useContext(WeatherContext);
   return (
     <div id="hourly-forecast">
-      {hourlyData && <ul id="hourly-forecast-list">
-        {hourlyData.map((item) => (
-          <HourlyForecastItem key={item.time} item={item}></HourlyForecastItem>
-        ))}
-      </ul>}
+      {hourly && (
+        <ul id="hourly-forecast-list">
+          {hourly.map((item) => (
+            <HourlyForecastItem
+              key={item.time}
+              item={item}
+            ></HourlyForecastItem>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
