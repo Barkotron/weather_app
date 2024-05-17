@@ -39,6 +39,21 @@ const DAYS = [
   "Saturday",
 ];
 
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+]
+
 export function formatHourlyData(data) {
   let hours = [];
   for (let i = 0; i < data.apparent_temperature.length; i++) {
@@ -81,4 +96,20 @@ export function formatCurrentData(data) {
   };
 
   return current;
+}
+
+export function formatDateTime(time){
+  const date = new Date(time);
+  return (`${DAYS[date.getUTCDay()]}, ${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}`);
+  //return "...";
+}
+
+export function hoursFromDatetime(time)
+{
+  return (time.split("T")[1]);
+}
+
+export function dateFromDatetime(time)
+{
+  return (time.split("T")[0]);
 }

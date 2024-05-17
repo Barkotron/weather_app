@@ -6,8 +6,8 @@ export default function WeatherContent() {
   return (
     <div id="weather-content">
       <DailyForecast></DailyForecast>
-      <HourlyForecast></HourlyForecast>
       <TodayForecast></TodayForecast>
+      <HourlyForecast></HourlyForecast>
     </div>
   );
 }

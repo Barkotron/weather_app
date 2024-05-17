@@ -75,6 +75,7 @@ Weather-Content
   justify-content: left;
   align-items: center;
   overflow-x: scroll;
+  margin-bottom: 8px;
 }
 
 .daily-forecast-item {
@@ -136,7 +137,7 @@ hourly forecast
   overflow-y: scroll;
   overflow-x: visible;
   margin: 16px;
-  border: dashed green;
+  /*border: dashed green;*/
 }
 
 .hourly-forecast-item {
@@ -188,7 +189,53 @@ today
   margin: 0;
   padding: 0;
 
-  text-align: center;
+  /*text-align: left;
   justify-content: left;
-  align-items: center;
+  align-items: center;*/
+}
+
+.today-header {
+  text-align: left;
+  padding-left: 16px;
+  margin: 0px;
+}
+
+.today-header h3 {
+  padding-top: 16px;
+}
+
+.today-temp-conditions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding-bottom: 16px;
+}
+
+.today-temp {
+  width: 49%;
+  text-align: left;
+  font-size: 48px;
+  font-weight: 600;
+  justify-content: center;
+  align-content: center;
+}
+
+.today-temp p {
+  margin: 0;
+  padding-left: 16px;
+}
+.today-conditions {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin: 0px;
+  padding-right: 16px;
+  justify-content: center;
+  align-content: center;
+}
+
+.today-conditions p {
+  margin: 0;
 }
