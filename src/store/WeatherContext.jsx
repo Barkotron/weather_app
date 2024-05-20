@@ -9,6 +9,7 @@ export const WeatherContext = createContext({
   today: [],
   daily: [],
   hourly: [],
+  selectedDay: {},
   unit: "C",
   setDaily: () => {},
   setHourly: () => {},
@@ -45,6 +46,7 @@ export default function WeatherContextProvider({ children }) {
     today: [],
     daily: [],
     hourly: [],
+    selectedDay: {},
     unit: "C",
   });
 
@@ -81,6 +83,7 @@ export default function WeatherContextProvider({ children }) {
     daily: weatherState.daily,
     hourly: weatherState.hourly,
     unit: weatherState.unit,
+    selectedDay: weatherState.selectedDay,
     setDaily: handleSetDailyWeather,
     setHourly: handleSetHourlyWeather,
     setCurrent: handleSetCurrentWeather,

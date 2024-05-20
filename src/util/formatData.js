@@ -51,8 +51,8 @@ const MONTHS = [
   "Sep",
   "Oct",
   "Nov",
-  "Dec"
-]
+  "Dec",
+];
 
 export function formatHourlyData(data) {
   let hours = [];
@@ -98,18 +98,25 @@ export function formatCurrentData(data) {
   return current;
 }
 
-export function formatDateTime(time){
+export function formatDateTime(time) {
   const date = new Date(time);
-  return (`${DAYS[date.getUTCDay()]}, ${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}`);
+
+  let hour = date.getHours();
+  hour = (hour < 10 ? "0" : "") + hour;
+
+  let min = date.getMinutes();
+  min = (min < 10 ? "0" : "") + min;
+
+  return `${DAYS[date.getUTCDay()]}, ${
+    MONTHS[date.getUTCMonth()]
+  } ${date.getUTCDate()} ${hour}:${min}`;
   //return "...";
 }
 
-export function hoursFromDatetime(time)
-{
-  return (time.split("T")[1]);
+export function hoursFromDatetime(time) {
+  return time.split("T")[1];
 }
 
-export function dateFromDatetime(time)
-{
-  return (time.split("T")[0]);
+export function dateFromDatetime(time) {
+  return time.split("T")[0];
 }
