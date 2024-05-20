@@ -107,10 +107,15 @@ export function formatDateTime(time) {
   let min = date.getMinutes();
   min = (min < 10 ? "0" : "") + min;
 
+  return `${formatDate(time)} ${hour}:${min}`;
+  //return "...";
+}
+
+export function formatDate(time) {
+  const date = new Date(time);
   return `${DAYS[date.getUTCDay()]}, ${
     MONTHS[date.getUTCMonth()]
-  } ${date.getUTCDate()} ${hour}:${min}`;
-  //return "...";
+  } ${date.getUTCDate()}`;
 }
 
 export function hoursFromDatetime(time) {

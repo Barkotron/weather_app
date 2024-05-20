@@ -1,21 +1,30 @@
 import HourlyForecastItem from "./HourlyForecastItem";
 import { useContext } from "react";
 import { WeatherContext } from "../store/WeatherContext";
+import { dateFromDatetime, formatDate } from "../util/formatData";
 
 export default function HourlyForecast() {
-  const { hourly } = useContext(WeatherContext);
+  const { hourly, selectedDay } = useContext(WeatherContext);
+
+  function filterHours() {
+    const hours = hourly.filter(
+      (item) =>
+        dateFromDatetime(item.time) === dateFromDatetime(selectedDay.time)
+    );
+
+    return hours.map((item) => (
+      <HourlyForecastItem key={item.time} item={item}></HourlyForecastItem>
+    ));
+  }
+
   return (
     <div id="hourly-forecast">
-      {hourly && (
-        <ul id="hourly-forecast-list">
-          {hourly.map((item) => (
-            <HourlyForecastItem
-              key={item.time}
-              item={item}
-            ></HourlyForecastItem>
-          ))}
-        </ul>
-      )}
+      <p style={{ textAlign: "left", paddingLeft: "16px" }}>
+        {Object.keys(selectedDay).length > 0
+          ? formatDate(selectedDay.time)
+          : "Today"}
+      </p>
+      {hourly && <ul id="hourly-forecast-list">{filterHours()};</ul>}
     </div>
   );
 }

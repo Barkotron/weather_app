@@ -17,12 +17,13 @@ export const WeatherContext = createContext({
   setHourly: () => {},
   setCurrent: () => {},
   setLocation: () => {},
+  setSelectedDay: () => {},
 });
 
 function weatherReducer(state, action) {
   if (action.type === "SET_DAILY") {
     const dailyWeatherFormatted = formatDailyData(action.payload);
-    return { ...state, daily: dailyWeatherFormatted };
+    return { ...state, daily: dailyWeatherFormatted, selectedDay: dailyWeatherFormatted[0] };
   }
 
   if (action.type === "SET_HOURLY") {
@@ -44,6 +45,11 @@ function weatherReducer(state, action) {
   if (action.type === "SET_LOCATION") {
     const locationFormatted = formatLocation(action.payload);
     return { ...state, location: locationFormatted };
+  }
+
+  if (action.type === "SET_SELECTED") {
+    console.log("set selected to: ", action.payload);
+    return { ...state, selectedDay: action.payload };
   }
 
   return state;
@@ -94,6 +100,13 @@ export default function WeatherContextProvider({ children }) {
     });
   }
 
+  function handleSetSelectedDay(day) {
+    weatherDispatch({
+      type: "SET_SELECTED",
+      payload: day,
+    });
+  }
+
   const ctxValue = {
     today: weatherState.today,
     daily: weatherState.daily,
@@ -105,6 +118,7 @@ export default function WeatherContextProvider({ children }) {
     setHourly: handleSetHourlyWeather,
     setCurrent: handleSetCurrentWeather,
     setLocation: handleSetLocation,
+    setSelectedDay: handleSetSelectedDay,
   };
 
   return (
