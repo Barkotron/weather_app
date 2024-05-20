@@ -120,3 +120,11 @@ export function hoursFromDatetime(time) {
 export function dateFromDatetime(time) {
   return time.split("T")[0];
 }
+
+export function formatLocation(location) {
+  const tokens = location.split("/");
+  if (tokens.length > 1) {
+    return tokens[1];
+  }
+  return location;
+}

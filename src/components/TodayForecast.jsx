@@ -3,12 +3,12 @@ import { WeatherContext } from "../store/WeatherContext";
 import { formatDateTime } from "../util/formatData";
 
 export default function TodayForecast() {
-  const { today } = useContext(WeatherContext);
+  const { today, location } = useContext(WeatherContext);
 
   return (
     <div id="today-forecast">
       <div className="today-header">
-        <h3 style={{ margin: "0" }}>Winnipeg</h3>
+        <h3 style={{ margin: "0" }}>{location}</h3>
         <p style={{ margin: "0" }}>{formatDateTime(today.time)}</p>
       </div>
 

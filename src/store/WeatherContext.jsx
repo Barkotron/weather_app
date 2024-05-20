@@ -3,6 +3,7 @@ import {
   formatHourlyData,
   formatDailyData,
   formatCurrentData,
+  formatLocation,
 } from "../util/formatData";
 
 export const WeatherContext = createContext({
@@ -11,9 +12,11 @@ export const WeatherContext = createContext({
   hourly: [],
   selectedDay: {},
   unit: "C",
+  location: "",
   setDaily: () => {},
   setHourly: () => {},
   setCurrent: () => {},
+  setLocation: () => {},
 });
 
 function weatherReducer(state, action) {
@@ -38,6 +41,11 @@ function weatherReducer(state, action) {
     return state;
   }
 
+  if (action.type === "SET_LOCATION") {
+    const locationFormatted = formatLocation(action.payload);
+    return { ...state, location: locationFormatted };
+  }
+
   return state;
 }
 
@@ -48,6 +56,7 @@ export default function WeatherContextProvider({ children }) {
     hourly: [],
     selectedDay: {},
     unit: "C",
+    location: "",
   });
 
   function handleChangeDay(id) {
@@ -61,6 +70,13 @@ export default function WeatherContextProvider({ children }) {
     weatherDispatch({
       type: "SET_DAILY",
       payload: dailyWeather,
+    });
+  }
+
+  function handleSetLocation(currentLocation) {
+    weatherDispatch({
+      type: "SET_LOCATION",
+      payload: currentLocation,
     });
   }
 
@@ -84,9 +100,11 @@ export default function WeatherContextProvider({ children }) {
     hourly: weatherState.hourly,
     unit: weatherState.unit,
     selectedDay: weatherState.selectedDay,
+    location: weatherState.location,
     setDaily: handleSetDailyWeather,
     setHourly: handleSetHourlyWeather,
     setCurrent: handleSetCurrentWeather,
+    setLocation: handleSetLocation,
   };
 
   return (

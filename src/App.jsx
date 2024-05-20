@@ -29,6 +29,7 @@ function App() {
         weatherCtx.setDaily(data.daily);
         weatherCtx.setHourly(data.hourly);
         weatherCtx.setCurrent(data.current);
+        weatherCtx.setLocation(data.timezone);
 
         console.log("hourly", formatHourlyData(data.hourly));
         console.log("daily", formatDailyData(data.daily));
