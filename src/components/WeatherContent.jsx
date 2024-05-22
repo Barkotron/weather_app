@@ -5,8 +5,8 @@ import TodayForecast from "./TodayForecast";
 export default function WeatherContent() {
   return (
     <div id="weather-content">
-      <DailyForecast></DailyForecast>
       <TodayForecast></TodayForecast>
+      <DailyForecast></DailyForecast>
       <HourlyForecast></HourlyForecast>
     </div>
   );

@@ -76,7 +76,7 @@ Weather-Content
   align-items: center;
   overflow-x: scroll;
   padding: 0;
-  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .daily-forecast-item {
@@ -92,10 +92,10 @@ Weather-Content
   padding: 8px;
   text-align: center;
 
-  transition: .15s;
+  transition: 0.15s;
 }
 
-.daily-forecast-item:hover{
+.daily-forecast-item:hover {
   transform: scale(1.08);
 }
 
@@ -155,8 +155,6 @@ hourly forecast
   align-items: center;
   padding-right: 8px;*/
   max-height: 400px;
-  overflow-y: scroll;
-  overflow-x: visible;
   margin: 16px;
   /*border: dashed green;*/
 
@@ -193,6 +191,16 @@ hourly forecast
   width: 100%;
   padding: 0px;
   margin: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.hourly-header {
+  text-align: left;
+  padding-left: 16px;
+  margin: 0px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 /*

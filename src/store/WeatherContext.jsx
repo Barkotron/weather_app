@@ -48,7 +48,6 @@ function weatherReducer(state, action) {
   }
 
   if (action.type === "SET_SELECTED") {
-    console.log("set selected to: ", action.payload);
     return { ...state, selectedDay: action.payload };
   }
 

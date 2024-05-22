@@ -19,12 +19,12 @@ export default function HourlyForecast() {
 
   return (
     <div id="hourly-forecast">
-      <p style={{ textAlign: "left", paddingLeft: "16px" }}>
+      <h3 className="hourly-header">
         {Object.keys(selectedDay).length > 0
           ? formatDate(selectedDay.time)
           : "Today"}
-      </p>
-      {hourly && <ul id="hourly-forecast-list">{filterHours()};</ul>}
+      </h3>
+      {hourly && <ul id="hourly-forecast-list">{filterHours()}</ul>}
     </div>
   );
 }
