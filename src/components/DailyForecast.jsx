@@ -1,16 +1,21 @@
 import DailyForecastItem from "./DailyForecastItem";
 import { useContext } from "react";
 import { WeatherContext } from "../store/WeatherContext";
+import { motion } from "framer-motion";
 
 export default function DailyForecast() {
-  const {daily, setSelectedDay} = useContext(WeatherContext);
+  const { daily, setSelectedDay } = useContext(WeatherContext);
   return (
     <div id="daily-forecast">
-      <ul id="daily-forecast-list">
+      <motion.ul id="daily-forecast-list">
         {daily.map((item) => (
-          <DailyForecastItem key={item.time} item={item} onClick={() => setSelectedDay(item)}></DailyForecastItem>
+          <DailyForecastItem
+            key={item.time}
+            item={item}
+            onClick={() => setSelectedDay(item)}
+          ></DailyForecastItem>
         ))}
-      </ul>
+      </motion.ul>
     </div>
   );
 }

@@ -75,6 +75,7 @@ Weather-Content
   justify-content: left;
   align-items: center;
   overflow-x: scroll;
+  overflow-y: hidden;
   padding: 0;
   margin-top: 8px;
 }
@@ -91,13 +92,9 @@ Weather-Content
   margin-right: 8px;
   padding: 8px;
   text-align: center;
-
-  transition: 0.15s;
 }
 
-.daily-forecast-item:hover {
-  transform: scale(1.08);
-}
+
 
 .daily-forecast-item h3 {
   color: #3d3d48;
@@ -162,6 +159,8 @@ hourly forecast
   border-width: 4px;
   border-radius: 16px;
   border-color: #1c1c29;
+  overflow-x: hidden;
+  overflow-y: hidden;
   /*background: #f7f5f5;*/
 }
 

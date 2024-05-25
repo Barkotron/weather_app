@@ -2,6 +2,7 @@ import HourlyForecastItem from "./HourlyForecastItem";
 import { useContext } from "react";
 import { WeatherContext } from "../store/WeatherContext";
 import { dateFromDatetime, formatDate } from "../util/formatData";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HourlyForecast() {
   const { hourly, selectedDay } = useContext(WeatherContext);
@@ -17,14 +18,39 @@ export default function HourlyForecast() {
     ));
   }
 
+  const filteredHours = filterHours();
   return (
     <div id="hourly-forecast">
-      <h3 className="hourly-header">
+      <AnimatePresence mode='wait'>
+      <motion.h3
+        key={"hourlyHeader" + selectedDay.time}
+        animate={{ opacity: [0, 1], x: [-100, 0],filter: "blur(0px)", }}
+        initial={{ opacity: [1, 0], x: [0, -100], filter: "blur(5px)"}}
+        exit={{ opacity: [1, 0], x: [0, -100] }}
+        transition={{duration: 0.15}}
+        className="hourly-header"
+      >
         {Object.keys(selectedDay).length > 0
           ? formatDate(selectedDay.time)
           : "Today"}
-      </h3>
-      {hourly && <ul id="hourly-forecast-list">{filterHours()}</ul>}
+      </motion.h3>
+      </AnimatePresence>
+      <AnimatePresence mode="popLayout">
+        {hourly && (
+          <motion.ul
+            key={"hourlyList" + selectedDay.time}
+            variants={{
+              visible: { transition: { staggerChildren: 0.05} },
+            }}
+            initial="hidden"
+            animate="visible"
+            //exit="hidden"
+            id="hourly-forecast-list"
+          >
+            {filteredHours}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
