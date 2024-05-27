@@ -1,5 +1,16 @@
 import { hoursFromDatetime } from "../util/formatData";
 import { motion, AnimatePresence } from "framer-motion";
+import Lottie from "react-lottie";
+import animationData from "../lotties/sunny-lottie.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 export default function HourlyForecastItem({ item }) {
   return (
@@ -8,8 +19,8 @@ export default function HourlyForecastItem({ item }) {
         className="hourly-forecast-item"
         layout
         variants={{
-          hidden: { opacity:  0, x:  -100 },
-          visible: { opacity: 1, x:  0 },
+          hidden: { opacity: 0, x: -100 },
+          visible: { opacity: 1, x: 0 },
         }}
         //exit={{ opacity: [1, 0], x: [0, -100] }}
         transition={{ type: "spring", bounce: 0.45, duration: 0.65 }}
@@ -18,6 +29,13 @@ export default function HourlyForecastItem({ item }) {
           {hoursFromDatetime(item.time)}
         </p>
         <p style={{ textAlign: "center", fontWeight: "600" }}>{item.temp}°</p>
+        <div className="hourly-forcast-lottie">
+          <Lottie options={defaultOptions} width={40} height={40}></Lottie>
+        </div>
+        <div className="hourly-forcast-lottie">
+          <Lottie options={defaultOptions} width={40} height={40}></Lottie>
+        </div>
+
         <p style={{ textAlign: "right", paddingRight: "16px" }}>
           {item.condition}
         </p>
