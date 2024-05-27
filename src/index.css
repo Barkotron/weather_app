@@ -85,7 +85,8 @@ Weather-Content
   border-width: 4px;
   border-radius: 16px;
   border-color: #1c1c29;
-  background: #f7f5f5;
+  color: #FFFFFF;
+  background: #1B1B1D;
   min-width: 100px;
   width: 100%;
   margin-left: 0;
@@ -97,11 +98,11 @@ Weather-Content
 
 
 .daily-forecast-item h3 {
-  color: #3d3d48;
+  color: #FFFFFF;
   margin: 0;
 }
 .daily-forecast-item p {
-  color: #1c1c29;
+  color: #FFFFFF;
 }
 
 .daily-forecast-date {
