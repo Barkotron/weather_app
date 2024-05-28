@@ -1,18 +1,23 @@
 import { hoursFromDatetime } from "../util/formatData";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "react-lottie";
-import animationData from "../lotties/sunny-lottie.json";
 
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
+
 
 export default function HourlyForecastItem({ item }) {
+
+
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: item.conditionIcon,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+
   return (
     <AnimatePresence>
       <motion.li
@@ -32,9 +37,7 @@ export default function HourlyForecastItem({ item }) {
         <div className="hourly-forcast-lottie">
           <Lottie options={defaultOptions} width={40} height={40}></Lottie>
         </div>
-        <div className="hourly-forcast-lottie">
-          <Lottie options={defaultOptions} width={40} height={40}></Lottie>
-        </div>
+        <p style={{ textAlign: "center", fontWeight: "600" }}>{item.precipitationChance}%</p>
 
         <p style={{ textAlign: "right", paddingRight: "16px" }}>
           {item.condition}

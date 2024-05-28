@@ -9,7 +9,6 @@ import {
   formatCurrentData,
 } from "./util/formatData";
 import { useContext } from "react";
-import WeatherContextProvider from "./store/WeatherContext";
 import { WeatherContext } from "./store/WeatherContext";
 
 function App() {

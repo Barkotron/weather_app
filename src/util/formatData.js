@@ -1,3 +1,15 @@
+import sunny from "../lotties/sunny-lottie.json";
+import dayPartlyCloudy from "../lotties/day-partly-cloudy.json";
+import dayFoggy from "../lotties/day-foggy.json";
+import dayPartlyShower from "../lotties/day-partly-shower-2.json";
+import dayStorm from "../lotties/day-storm.json";
+import mist from "../lotties/mist.json";
+import nightCloudy from "../lotties/night-cloudy.json";
+import nightRain from "../lotties/night-rain.json";
+import nightSnow from "../lotties/night-snow.json";
+import snow from "../lotties/snow.json";
+import cloudy from "../lotties/cloudy.json";
+
 const WEATHER_CODES = {
   0: "Clear",
   1: "Mostly Clear",
@@ -54,6 +66,40 @@ const MONTHS = [
   "Dec",
 ];
 
+function getWeatherAnimation(weatherCode) {
+  switch (weatherCode) {
+    case 0:
+    case 1:
+      return sunny;
+    case 2:
+      return dayPartlyCloudy;
+    case 3:
+      return cloudy;
+    case 45:
+    case 48:
+      return dayFoggy;
+    case 51:
+    case 53:
+    case 55:
+    case 56:
+    case 57:
+    case 61:
+    case 62:
+    case 63:
+    case 66:
+    case 67:
+    case 80:
+    case 81:
+    case 82:
+    case 85:
+      return dayPartlyShower;
+    case 95:
+      return dayStorm;
+  }
+
+  return sunny;
+}
+
 export function formatHourlyData(data) {
   let hours = [];
   for (let i = 0; i < data.apparent_temperature.length; i++) {
@@ -65,6 +111,7 @@ export function formatHourlyData(data) {
       precipitationChance: Math.round(data.precipitation_probability[i]),
       temp: Math.round(data.temperature_2m[i]),
       condition: WEATHER_CODES[data.weather_code[i]],
+      conditionIcon: getWeatherAnimation(data.weather_code[i]),
     };
 
     hours.push(hour);
