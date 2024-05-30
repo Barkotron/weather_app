@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import WeatherContent from "./components/WeatherContent";
-import { fetchWeather } from "./util/http";
+import { fetchWeather, refreshWeather } from "./util/http";
 import { useEffect, useState } from "react";
 import {
   formatHourlyData,
@@ -20,11 +20,11 @@ function App() {
   useEffect(() => {
     async function fetchWeatherData() {
       setIsFetching(true);
-      try {
+     /* try {
         const data = await fetchWeather();
         console.log("all data", data);
 
-        /* set up context */
+        // set up context
         weatherCtx.setDaily(data.daily);
         weatherCtx.setHourly(data.hourly);
         weatherCtx.setCurrent(data.current);
@@ -35,12 +35,13 @@ function App() {
         console.log("current", formatCurrentData(data.current));
       } catch (error) {
         setError({ message: error.message || "Failed to fetch weather data." });
-      }
-
+      }*/
+      await refreshWeather(weatherCtx);
       setIsFetching(false);
     }
-
+    
     fetchWeatherData();
+    
   }, []);
 
   return (

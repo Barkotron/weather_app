@@ -1,3 +1,6 @@
+//import { useContext } from "react";
+//import { WeatherContext } from "../store/WeatherContext";
+
 export async function fetchWeather() {
 
   const response = await fetch(
@@ -9,4 +12,26 @@ export async function fetchWeather() {
     throw new Error("Failed to fetch weather data");
   }
   return resData;
+}
+
+export async function refreshWeather(weatherCtx)
+{
+  //const weatherCtx = useContext(WeatherContext);
+
+  try {
+    const data = await fetchWeather();
+    console.log("all data", data);
+
+    /* set up context */
+    weatherCtx.setDaily(data.daily);
+    weatherCtx.setHourly(data.hourly);
+    weatherCtx.setCurrent(data.current);
+    weatherCtx.setLocation(data.timezone);
+
+    console.log("hourly", weatherCtx.hourly);
+    console.log("daily", weatherCtx.daily);
+    console.log("current", weatherCtx.today);
+  } catch (error) {
+    //setError({ message: error.message || "Failed to fetch weather data." });
+  }
 }
