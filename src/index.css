@@ -40,11 +40,18 @@ Header
 */
 
 #header {
+  display: flex;
+  flex-direction: row;
   text-align: left;
 }
 
 #header h1 {
   text-align: left;
+}
+
+#header button{
+  margin: auto;
+  margin-left: 16px;
 }
 
 /*
